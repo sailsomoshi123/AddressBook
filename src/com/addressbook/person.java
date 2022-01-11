@@ -2,12 +2,29 @@ package com.addressbook;
 
 public class person {
 
-    private String firstName, lastName;
+    private String firstName;
+    private String lastName;
     private String address;
     private String city;
     private String email;
     private String state;
-    private long zip, phoneNumber;
+    private int zip;
+    private long phoneNumber;
+
+    person(){
+    }
+
+    person(String firstName, String lastName, String address, String city,String email,
+           String state,int zip ,Long phoneNumber) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.address=address;
+        this.city=city;
+        this.email=email;
+        this.state=state;
+        this.zip=zip;
+        this.phoneNumber=phoneNumber;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -53,7 +70,7 @@ public class person {
         return zip;
     }
 
-    public void setZip(long zip) {
+    public void setZip(int zip) {
         this.zip = zip;
     }
 
