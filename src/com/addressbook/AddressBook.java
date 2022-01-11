@@ -2,9 +2,35 @@ package com.addressbook;
 import java.util.*;
 
 public class AddressBook {
-    ArrayList<person> contact = new ArrayList<person>();
+    static ArrayList<person> contact = new ArrayList<person>();
+    static HashMap<String,ArrayList> book = new HashMap<>();
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 1;
+        while (n==1){
+            System.out.println("1.to add addressbook 2.to print 3.to exit");
+            int number = sc.nextInt();
+            if (number==1){
+                addressbook();
+                System.out.println("enter a addressbook name:");
+                String name = sc.next();
+                book.put(name,contact);
+            }
+            else if (number==2){
+                System.out.println(book);
+            }
+            else if(number==3){
+                n=1;
+                break;
+            }
+            else{
+                System.out.println("invalid option");
+            }
+        }
+    }
+
+    public static void addressbook () {
         AddressBook adressbook = new AddressBook();
         person person = new person();
         Scanner sc = new Scanner(System.in);
@@ -19,6 +45,7 @@ public class AddressBook {
                 System.out.println(adressbook.contact);
             } else if (choice == 3) {
                 adressbook.editContact();
+                System.out.println(book);
             } else if (choice == 4) {
                 adressbook.deleteContact();
             }else if (choice == 5){
@@ -106,7 +133,7 @@ public class AddressBook {
     }
     public void deleteContact(){AddressBook addressBook=new AddressBook();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a contact name you wish to delete:");
+        System.out.println("Enter a contact name you wish to edit:");
         ListIterator<person> itr = contact.listIterator();
         String name = sc.nextLine();
         while (itr.hasNext()) {
@@ -117,5 +144,4 @@ public class AddressBook {
         }
     }
 }
-
 
