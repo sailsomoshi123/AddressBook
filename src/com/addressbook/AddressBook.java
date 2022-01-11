@@ -10,7 +10,8 @@ public class AddressBook {
         Scanner sc = new Scanner(System.in);
         int n = 1;
         while (n == 1) {
-            System.out.println("1.Add contact " + "2.print contact" + " 3.Edit contact" + " 4.exit");
+            System.out.println("1.Add contact " + "2.print contact" + " 3.Edit contact" +
+                    " 4.delete contact" +" 5.exit");
             int choice = sc.nextInt();
             if (choice == 1) {
                 adressbook.contact.add(addContact());
@@ -19,6 +20,8 @@ public class AddressBook {
             } else if (choice == 3) {
                 adressbook.editContact();
             } else if (choice == 4) {
+                adressbook.deleteContact();
+            }else if (choice == 5){
                 n = 2;
                 break;
             } else {
@@ -98,6 +101,19 @@ public class AddressBook {
                     case 9:
                         System.exit(0);
                 }
+            }
+        }
+    }
+    public void deleteContact(){AddressBook addressBook=new AddressBook();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a contact name you wish to edit:");
+        ListIterator<person> itr = contact.listIterator();
+        String name = sc.nextLine();
+        while (itr.hasNext()) {
+            person person = itr.next();
+            if (name.equals(person.getFirstName())){
+                itr.remove();
+
             }
         }
     }
