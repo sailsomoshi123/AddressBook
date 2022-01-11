@@ -60,7 +60,7 @@ public class AddressBook {
             if (name.equals(person.getFirstName())) {
                 System.out.println("choose a option which you want to edit:");
                 System.out.println("1.first name  2.Last name 3.address 4.city 5.state 6.zip " +
-                        "7.phone number 8.email");
+                        "7.phone number 8.email 9.exit");
                 int opt =sc.nextInt();
                 switch (opt) {
                     case 1:
