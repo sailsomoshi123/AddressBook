@@ -106,16 +106,16 @@ public class AddressBook {
     }
     public void deleteContact(){AddressBook addressBook=new AddressBook();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a contact name you wish to edit:");
+        System.out.println("Enter a contact name you wish to delete:");
         ListIterator<person> itr = contact.listIterator();
         String name = sc.nextLine();
         while (itr.hasNext()) {
             person person = itr.next();
             if (name.equals(person.getFirstName())){
                 itr.remove();
-
             }
         }
     }
 }
+
 
