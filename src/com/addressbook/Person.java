@@ -1,6 +1,6 @@
 package com.addressbook;
 
-public class person {
+public class Person {
 
     private String firstName;
     private String lastName;
@@ -11,19 +11,19 @@ public class person {
     private int zip;
     private long phoneNumber;
 
-    person(){
+    Person() {
     }
 
-    person(String firstName, String lastName, String address, String city,String email,
-           String state,int zip ,Long phoneNumber) {
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.address=address;
-        this.city=city;
-        this.email=email;
-        this.state=state;
-        this.zip=zip;
-        this.phoneNumber=phoneNumber;
+    Person(String firstName, String lastName, String address, String city, String email,
+           String state, int zip, Long phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+        this.state = state;
+        this.zip = zip;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {
@@ -85,7 +85,8 @@ public class person {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String toString () {
+
+    public String toString() {
         return firstName + " " + lastName + " " + address + " " + city + " " + state + " " + zip + " " + phoneNumber + " " + email;
     }
 }

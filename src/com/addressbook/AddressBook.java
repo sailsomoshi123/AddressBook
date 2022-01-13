@@ -2,8 +2,9 @@ package com.addressbook;
 import java.util.*;
 
 public class AddressBook {
-    static ArrayList<person> contact = new ArrayList<person>();
-    static HashMap<String,ArrayList> book = new HashMap<>();
+    static ArrayList<Person> contact = new ArrayList<>();
+    static HashMap<String,ArrayList<Person>> book = new HashMap<>();
+    static AddressBook addressBook = new AddressBook();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -31,8 +32,6 @@ public class AddressBook {
     }
 
     public static void addressbook () {
-        AddressBook adressbook = new AddressBook();
-        person person = new person();
         Scanner sc = new Scanner(System.in);
         int n = 1;
         while (n == 1) {
@@ -40,14 +39,13 @@ public class AddressBook {
                     " 4.delete contact" +" 5.exit");
             int choice = sc.nextInt();
             if (choice == 1) {
-                adressbook.contact.add(addContact());
+                contact.add(addContact());
             } else if (choice == 2) {
-                System.out.println(adressbook.contact);
+                System.out.println(contact);
             } else if (choice == 3) {
-                adressbook.editContact();
-                System.out.println(book);
+                addressBook.editContact();
             } else if (choice == 4) {
-                adressbook.deleteContact();
+                addressBook.deleteContact();
             }else if (choice == 5){
                 n = 2;
                 break;
@@ -57,8 +55,8 @@ public class AddressBook {
         }
     }
 
-    public static person addContact() {
-        person person = new person();
+    public static Person addContact() {
+        Person person = new Person();
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a first name:");
         person.setFirstName(sc.next());
@@ -80,14 +78,13 @@ public class AddressBook {
     }
 
     public void editContact() {
-        AddressBook addressBook=new AddressBook();
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a contact name you wish to edit:");
-        ListIterator<person> itr = contact.listIterator();
+        ListIterator<Person> itr = contact.listIterator();
         String name = sc.nextLine();
         while (itr.hasNext()) {
-            person person = itr.next();
-            if (name.equals(person.getFirstName())) {
+            Person person = itr.next();
+            if (name.equalsIgnoreCase(person.getFirstName())) {
                 System.out.println("choose a option which you want to edit:");
                 System.out.println("1.first name  2.Last name 3.address 4.city 5.state 6.zip " +
                         "7.phone number 8.email 9.exit");
@@ -126,20 +123,27 @@ public class AddressBook {
                         person.setEmail(sc.next());
                         break;
                     case 9:
-                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Invalid option");
                 }
+                System.out.println("DONE");
+            }else {
+                System.out.println("There is no such contact available");
             }
         }
     }
-    public void deleteContact(){AddressBook addressBook=new AddressBook();
+    public void deleteContact(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a contact name you wish to delete:");
-        ListIterator<person> itr = contact.listIterator();
+        ListIterator<Person> itr = contact.listIterator();
         String name = sc.nextLine();
         while (itr.hasNext()) {
-            person person = itr.next();
-            if (name.equals(person.getFirstName())){
+            Person person = itr.next();
+            if (name.equalsIgnoreCase(person.getFirstName())){
                 itr.remove();
+                System.out.println("You remove contact Successfully");
+                break;
             }
         }
     }
